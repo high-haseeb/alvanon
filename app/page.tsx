@@ -1,18 +1,15 @@
-import LineCloud from "@/components/three/LineCloud";
 import Navbar from "@/components/ui/Navbar";
 import Hero from "@/components/ui/Hero";
-import Clients from "@/components/ui/Clients";
 import Details from "@/components/ui/Details";
-import DotGround from "@/components/three/DotGround";
+import Scene from "@/components/three/Model";
 
 export default function Home() {
   return (
-    <main className="overflow-hidden w-screen">
+    <main className="overflow-hidden w-screen bg-black">
       <Navbar />
+      {/* <Scene /> */}
       <Hero />
-      {/* <Clients/> */}
-      <Details/>
-      {/* <DotGround/> */}
+      <Details />
     </main>
   );
 }

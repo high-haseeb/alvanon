@@ -14,7 +14,7 @@ const LineCloud = (props: any) => {
     </div>
   );
 };
-const Points = (props: any) => {
+export const Points = (props: any) => {
   const effectController = {
     showDots: true,
     showLines: true,
@@ -31,8 +31,8 @@ const Points = (props: any) => {
   let particlePositions;
   let linesMesh;
 
-  const maxParticleCount = 1000;
-  let particleCount = 500;
+  const maxParticleCount = 200;
+  let particleCount = 100;
   const r = 800;
   const rHalf = r / 2;
 
@@ -174,7 +174,7 @@ const Points = (props: any) => {
           particleData.numConnections++;
           particleDataB.numConnections++;
 
-          const alpha = 1.0 - dist / effectController.minDistance;
+          const alpha=  0.3 ;//1.0 - dist / effectController.minDistance;
 
           positions[vertexpos++] = particlePositions[i * 3];
           positions[vertexpos++] = particlePositions[i * 3 + 1];
