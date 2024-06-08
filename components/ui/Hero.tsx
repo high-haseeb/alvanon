@@ -3,9 +3,9 @@ import Scene from "../three/Model";
 
 const Hero = () => {
   return (
-    <div className="overflow-hidden w-screen h-screen text-white bg-black z-50 relative">
+    <div className="overflow-hidden w-screen h-screen text-white bg-black z-50 relative snap-end section">
 
-      <Scene/>
+      <LineCloud/>
       <div className="flex absolute top-1/2 left-1/2 flex-col gap-8 justify-center items-center p-4 w-full text-center -translate-x-1/2 -translate-y-1/2 lg:top-40 lg:left-40 lg:items-start lg:w-1/2 lg:text-left lg:translate-x-0 lg:translate-y-0">
         <div className="text-5xl font-medium lg:text-9xl lg:leading-[120px]">
           <div>We don't</div>

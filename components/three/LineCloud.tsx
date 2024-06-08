@@ -6,7 +6,7 @@ import * as THREE from "three";
 
 const LineCloud = (props: any) => {
   return (
-    <div className="absolute top-0 left-0 w-full h-full z-0" {...props}>
+    <div className="absolute top-0 left-0 w-full h-full z-0 bg-black" {...props}>
       <Canvas className="w-full h-full" >
         <OrbitControls enableZoom={false}/>
         <Points />
@@ -31,8 +31,8 @@ export const Points = (props: any) => {
   let particlePositions;
   let linesMesh;
 
-  const maxParticleCount = 200;
-  let particleCount = 100;
+  const maxParticleCount = 1000;
+  let particleCount = 500;
   const r = 800;
   const rHalf = r / 2;
 
@@ -174,7 +174,7 @@ export const Points = (props: any) => {
           particleData.numConnections++;
           particleDataB.numConnections++;
 
-          const alpha=  0.3 ;//1.0 - dist / effectController.minDistance;
+          const alpha = 1.0 - dist / effectController.minDistance;
 
           positions[vertexpos++] = particlePositions[i * 3];
           positions[vertexpos++] = particlePositions[i * 3 + 1];

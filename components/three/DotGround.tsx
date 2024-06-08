@@ -100,7 +100,7 @@ const Ground = () => {
       void main() {
       vPosition = position;
       vUv = uv;
-      float z = cnoise(position + uTime * 0.4) * 0.2 ;
+      float z = cnoise(position + uTime * 0.5) * 0.1 ;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position.x, position.y, z, 1.0);
       gl_PointSize = (z + 1.0) * 3.0;
       }

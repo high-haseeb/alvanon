@@ -1,22 +1,22 @@
 'use client'
-import { Center, Environment, OrbitControls,  PresentationControls, ScrollControls } from '@react-three/drei'
+import {  Environment, Loader, ScrollControls, Sparkles } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Model } from './Jump'
 import React from 'react'
-import LineCloud from './LineCloud'
+import { Overlay } from '@/components/three/Overlay'
 
 
 const Scene = () => {
   return (
-    <div className='w-screen h-screen relative'>
-      <LineCloud/>
-      <Canvas gl={{depth: true}} className='z-40'>
+    <div className='w-screen h-screen snap-start section'>
+      <Loader/>
+      <Canvas camera={{zoom: 4}}>
         <Environment preset='city' />
-        {/* <OrbitControls enableZoom={true} /> */}
-        <ScrollControls pages={6}>
+        <ScrollControls pages={4} damping={0.25}  distance={2} prepend  >
           <Model />
+          <Overlay />
         </ScrollControls>
-
+        <Sparkles color={'orange'} />
       </Canvas>
     </div>
   )
