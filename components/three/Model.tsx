@@ -8,7 +8,7 @@ import { Overlay } from '@/components/three/Overlay'
 
 const Scene = () => {
   return (
-    <div className='w-screen h-screen snap-start section'>
+    <div className='w-screen h-screen section'>
       <Canvas camera={{zoom: 4}}>
         <Environment preset='city' />
         <ScrollControls pages={4} damping={0.25}  distance={2} prepend  >

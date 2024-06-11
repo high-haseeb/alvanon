@@ -8,8 +8,6 @@ const DotGround = (props: any) => {
   return (
     <div className="absolute top-0 left-0 z-0 w-full h-full" {...props}>
       <Canvas className="w-full h-full" camera={{zoom: 2}}>
-        {/* <Stats/> */}
-        {/* <OrbitControls /> */}
         <Ground />
       </Canvas>
     </div>
@@ -127,9 +125,10 @@ const Ground = () => {
   })
   const geometry = new THREE.PlaneGeometry(1, 2, 100, 200);
   const group = new THREE.Points(geometry, material);
-  group.rotation.set(-Math.PI /3, 0, -Math.PI /2)
+  group.rotation.set(-Math.PI /2 + 0.1, 0, -Math.PI /2)
   // group.rotateY(Math.PI /2)
   group.position.z = 4;
+  group.position.y = -0.2;
   useFrame(({ clock }) => {
     material.uniforms.uTime.value = clock.getElapsedTime();
   });

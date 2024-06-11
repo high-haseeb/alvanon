@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animation-pause {
+    animation-play-state: paused;
+  }
+}
+
 @font-face {
   font-family: "Montserrat";
   src: url("/fonts/Montserrat-VariableFont_wght.ttf");
@@ -16,12 +22,10 @@ body {
 .parent {
   overflow: scroll;
   height: 100vh;
-  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-points-y: repeat(50vh);
   scroll-snap-type: y mandatory;
 }
 
 .section {
-  height: 100vh;
   scroll-snap-align: start;
-  position: relative;
 }

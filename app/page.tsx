@@ -6,6 +6,8 @@ import Hero from "@/components/ui/Hero";
 import Details from "@/components/ui/Details";
 import Scene from "@/components/three/Model";
 import AlvaForm from "@/components/three/AlvaForm";
+import Footer from "@/components/ui/Footer";
+import Clients from "@/components/ui/Clients";
 import {Loader} from '@react-three/drei'
 
 export default function Home() {
@@ -17,8 +19,10 @@ export default function Home() {
       <BackToTop/>
       <Hero />
       <Scene />
+      <Clients/>
       <Details />
       <AlvaForm/>
+      <Footer/>
     </div>
   );
 }
