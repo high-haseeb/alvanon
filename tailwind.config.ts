@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        Montserrat : 'Montserrat'
+      },
       colors: {
         brOrange: '#EC7700',
       }

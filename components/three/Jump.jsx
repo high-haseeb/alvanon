@@ -13,9 +13,10 @@ export function Model(props) {
   useEffect(() => {
     suitRef.current.visible = false;
     for (let index = 0; index < suitRef.current.children.length; index++) {
-      suitRef.current.children[index].material.transparent = true;
-      suitRef.current.children[index].material.opacity = 0;
-      suitRef.current.children[index].material.color.set(0.6, 0.3, 0.2);
+      suitRef.current.children[index].material = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.0, color: "red" });
+      // suitRef.current.children[index].material.transparent = true;
+      // suitRef.current.children[index].material.opacity = 0;
+      // suitRef.current.children[index].material.color = new THREE.Color('red')
     }
   }, [suitRef.current]);
 
@@ -26,9 +27,9 @@ export function Model(props) {
 
   const points = [];
   for (let index = 0; index < geometry.attributes.position.count * 3; index += 3) {
-    const x = random(500);
-    const y = random(500);
-    const z = random(500);
+    const x = random(300);
+    const y = random(300);
+    const z = random(300);
     points.push(new THREE.Vector3(x, y, z));
   }
   const bufGeo = new THREE.BufferGeometry().setFromPoints(points);
@@ -37,18 +38,19 @@ export function Model(props) {
 
   const lamberModel = new THREE.Mesh(geometry, materials.lambert1_0);
   lamberModel.material.transparent = true;
+  lamberModel.material.color = new THREE.Color("#F2D8BD");
   lamberModel.material.opacity = 0;
 
   const sensitivity = 0.4;
   const tempRotation = new THREE.Vector3();
 
-  useFrame(({ pointer }) => {
+  useFrame(({ camera, pointer }) => {
     // form model from points
     if (scroll.range(0 * page, page * 1.5) < 1 && scroll.range(0 * page, page) > 0) {
-      for (let index = 0; index < model.geometry.attributes.position.count * 3; index++) {
-        model.geometry.attributes.position.array[index] = lerp(
-          tempGeo.attributes.position.array[index],
-          geometry.attributes.position.array[index],
+      for (let i = 0; i < model.geometry.attributes.position.count * 3; i++) {
+        model.geometry.attributes.position.array[i] = lerp(
+          tempGeo.attributes.position.array[i],
+          geometry.attributes.position.array[i],
           scroll.range(0 * page, page),
         );
       }
@@ -63,23 +65,26 @@ export function Model(props) {
     }
 
     // make the suit visible
+    suitRef.current.visible = scroll.range(3 * page, page) > 0;
     if (scroll.range(3 * page, page) > 0) {
-      suitRef.current.visible = true;
       for (let index = 0; index < suitRef.current.children.length; index++) {
-        console.log('this was called')
+        console.log("this was called");
         suitRef.current.children[index].material.opacity = scroll.range(3 * page, page);
       }
     }
-
+    // camera.rotation.y += 0.05 * ((-pointer.x * 0.5) - group.current.rotation.y);
+    // group.current.rotation.z += 0.05 * ((pointer.y * 0.01) - group.current.rotation.z);
     // rotate the models with mouse
-    tempRotation.lerp({ x: 0, y: -pointer.y * Math.PI * 0.01, z: -pointer.x * Math.PI * sensitivity }, 0.02);
-    model.rotation.setFromVector3(tempRotation);
-    suitRef.current.rotation.setFromVector3(tempRotation);
-    lamberModel.rotation.setFromVector3(tempRotation);
+    // tempRotation.lerp({ x:-pointer.y, y:0, z: 0}, 0.02);
+    // camera.lookAt(tempRotation)
+    // model.rotation.setFromVector3(tempRotation);
+    // lamberModel.rotation.setFromVector3(tempRotation);
+    // suitRef.current.rotation.setFromVector3(tempRotation);
   });
+  const group = useRef()
 
   return (
-    <group {...props} dispose={null} position={[0, -80, -150 * 4]} rotation={[Math.PI / 2, 0, 0]}>
+    <group {...props} dispose={null} position={[0, -80, -150 * 4]} rotation={[Math.PI / 2, 0, 0]} ref={group}>
       <group ref={(ref) => (suitRef.current = ref)}>
         <mesh geometry={nodes.Design_Piece_mat_0_Outside.geometry} material={materials.Mat_0} />
         <mesh geometry={nodes.Design_Piece_mat_10_Outside.geometry} material={materials.Mat_10} />
@@ -99,10 +104,8 @@ export function Model(props) {
 
       <primitive object={model} />
       <primitive object={lamberModel} />
-      <mesh>
-        <planeGeometry args={[100, 100, 1, 1]} />
-        <meshStandardMaterial color={"lime"} />
-      </mesh>
+
+      {/*TODO: make the floor  */}
 
       {/* <mesh geometry={nodes.Avatar_pasted__Sport_sneakers_2.geometry} material={materials.pasted__Sport_sneakers_0} /> */}
       {/* <mesh geometry={nodes.Avatar_pasted__Sport_sneakers_3.geometry} material={materials.pasted__Sport_sneakers_0} /> */}

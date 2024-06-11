@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import {  Montserrat } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Alvonon",
+  title: "Alvanon",
   description: "we don't make clothes, we make clothes fit",
 };
 
@@ -16,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>{children}</body>
+      <body className='font-Montserrat'>{children}</body>
     </html>
   );
 }

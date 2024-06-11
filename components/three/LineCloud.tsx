@@ -1,19 +1,20 @@
 "use client";
-import { OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import React from "react";
+import React, { useRef, useState } from "react";
 import * as THREE from "three";
+import { BBAnchor, Box, Html, OrbitControls, Text } from "@react-three/drei";
 
 const LineCloud = (props: any) => {
   return (
     <div className="absolute top-0 left-0 w-full h-full z-0 bg-black" {...props}>
-      <Canvas className="w-full h-full" >
+      <Canvas className="w-full h-full">
         <OrbitControls enableZoom={false}/>
         <Points />
       </Canvas>
     </div>
   );
 };
+
 export const Points = (props: any) => {
   const effectController = {
     showDots: true,
@@ -52,7 +53,7 @@ export const Points = (props: any) => {
   colors = new Float32Array(segments * 3);
 
   const pMaterial = new THREE.PointsMaterial({
-    color: '#EC7700',
+    color: "#EC7700",
     size: 3,
     blending: THREE.AdditiveBlending,
     transparent: true,
@@ -73,22 +74,13 @@ export const Points = (props: any) => {
 
     // add it to the geometry
     particlesData.push({
-      velocity: new THREE.Vector3(
-        -1 + Math.random() * 2,
-        -1 + Math.random() * 2,
-        -1 + Math.random() * 2,
-      ),
+      velocity: new THREE.Vector3(-1 + Math.random() * 2, -1 + Math.random() * 2, -1 + Math.random() * 2),
       numConnections: 0,
     });
   }
 
   particles.setDrawRange(0, particleCount);
-  particles.setAttribute(
-    "position",
-    new THREE.BufferAttribute(particlePositions, 3).setUsage(
-      THREE.DynamicDrawUsage,
-    ),
-  );
+  particles.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3).setUsage(THREE.DynamicDrawUsage));
 
   // create the particle system
   pointCloud = new THREE.Points(particles, pMaterial);
@@ -96,14 +88,8 @@ export const Points = (props: any) => {
 
   const geometry = new THREE.BufferGeometry();
 
-  geometry.setAttribute(
-    "position",
-    new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage),
-  );
-  geometry.setAttribute(
-    "color",
-    new THREE.BufferAttribute(colors, 3).setUsage(THREE.DynamicDrawUsage),
-  );
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage));
+  geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3).setUsage(THREE.DynamicDrawUsage));
 
   geometry.computeBoundingSphere();
 
@@ -113,7 +99,7 @@ export const Points = (props: any) => {
     vertexColors: true,
     blending: THREE.AdditiveBlending,
     transparent: true,
-    color: '#EC7700'
+    color: "#EC7700",
   });
 
   linesMesh = new THREE.LineSegments(geometry, material);
@@ -135,35 +121,18 @@ export const Points = (props: any) => {
       particlePositions[i * 3 + 1] += particleData.velocity.y;
       particlePositions[i * 3 + 2] += particleData.velocity.z;
 
-      if (
-        particlePositions[i * 3 + 1] < -rHalf ||
-        particlePositions[i * 3 + 1] > rHalf
-      )
-        particleData.velocity.y = -particleData.velocity.y;
+      if (particlePositions[i * 3 + 1] < -rHalf || particlePositions[i * 3 + 1] > rHalf) particleData.velocity.y = -particleData.velocity.y;
 
-      if (particlePositions[i * 3] < -rHalf || particlePositions[i * 3] > rHalf)
-        particleData.velocity.x = -particleData.velocity.x;
+      if (particlePositions[i * 3] < -rHalf || particlePositions[i * 3] > rHalf) particleData.velocity.x = -particleData.velocity.x;
 
-      if (
-        particlePositions[i * 3 + 2] < -rHalf ||
-        particlePositions[i * 3 + 2] > rHalf
-      )
-        particleData.velocity.z = -particleData.velocity.z;
+      if (particlePositions[i * 3 + 2] < -rHalf || particlePositions[i * 3 + 2] > rHalf) particleData.velocity.z = -particleData.velocity.z;
 
-      if (
-        effectController.limitConnections &&
-        particleData.numConnections >= effectController.maxConnections
-      )
-        continue;
+      if (effectController.limitConnections && particleData.numConnections >= effectController.maxConnections) continue;
 
       // Check collision
       for (let j = i + 1; j < particleCount; j++) {
         const particleDataB = particlesData[j];
-        if (
-          effectController.limitConnections &&
-          particleDataB.numConnections >= effectController.maxConnections
-        )
-          continue;
+        if (effectController.limitConnections && particleDataB.numConnections >= effectController.maxConnections) continue;
 
         const dx = particlePositions[i * 3] - particlePositions[j * 3];
         const dy = particlePositions[i * 3 + 1] - particlePositions[j * 3 + 1];
@@ -203,11 +172,66 @@ export const Points = (props: any) => {
 
     pointCloud.geometry.attributes.position.needsUpdate = true;
     group.rotation.y += 0.001;
+    texta.current.position.set(particlePositions[0] / 100, particlePositions[1]/ 100, 0);
+    textb.current.position.set(particlePositions[30] / 100, particlePositions[31]/ 100, 0);
+    textc.current.position.set(particlePositions[600] / 100, particlePositions[601]/ 100, 0);
+    textd.current.position.set(particlePositions[60] / 100, particlePositions[61]/ 100, 0);
+    // box.current = [particlePositions[0] / 100, particlePositions[1] / 100, 0];
+    // console.log(box.current)
+    // console.log(box.current.position)
+    // console.log(particlePositions[0], particlePositions[1], particlePositions[2])
   });
-  group.scale.set(0.01, 0.01, 0.01)
 
+  // Add floating text to a couple of points
+  const textPositions = [
+    new THREE.Vector3(particlePositions[0], particlePositions[1], particlePositions[2]),
+    new THREE.Vector3(particlePositions[3], particlePositions[4], particlePositions[5]),
+  ];
+
+  const texts = ["Point 1", "Point 2"];
+
+  group.scale.set(0.01, 0.01, 0.01);
+  const texta = useRef<any>([0, 0, 0]);
+  const textb = useRef<any>([0, 0, 0]);
+  const textc = useRef<any>([0, 0, 0]);
+  const textd = useRef<any>([0, 0, 0]);
   //
-  return <primitive object={group} />;
+  return (
+    <>
+      <primitive object={group} />
+      <mesh ref={texta}>
+        <BBAnchor anchor={[0, 0, 0]}>
+          <Html center>
+            <div className="border-white border text-white px-4 font-bold w-max">Customer 6969</div>
+          </Html>
+        </BBAnchor>
+      </mesh>
+
+      <mesh ref={textb}>
+        <BBAnchor anchor={[0, 0, 0]}>
+          <Html center>
+            <div className="border-white border text-white px-4 font-bold w-max">Customer 420</div>
+          </Html>
+        </BBAnchor>
+      </mesh>
+
+      <mesh ref={textc}>
+        <BBAnchor anchor={[0, 0, 0]}>
+          <Html center>
+            <div className="border-white border text-white px-4 font-bold w-max">Customer 5004</div>
+          </Html>
+        </BBAnchor>
+      </mesh>
+
+      <mesh ref={textd}>
+        <BBAnchor anchor={[0, 0, 0]}>
+          <Html center>
+            <div className="border-white border text-white px-4 font-bold w-max">Customer 3002</div>
+          </Html>
+        </BBAnchor>
+      </mesh>
+    </>
+  );
 };
 
 export default LineCloud;
