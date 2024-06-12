@@ -14,16 +14,16 @@ export default function Home() {
   return (
     <div className="w-screen bg-black parent" id="parent">
 
-      {/* <Loader/> */}
+      <Loader/>
       <Navbar />
       <ProgressDots/>
       <BackToTop/>
 
       <Hero />
-      {/* <Scene /> */}
-      {/* <Clients/> */}
-      {/* <Details /> */}
-      {/* <AlvaForm/> */}
+      <Scene />
+      <Clients/>
+      <Details />
+      <AlvaForm/>
       <Footer/>
     </div>
   );
