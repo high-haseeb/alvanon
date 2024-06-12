@@ -98,7 +98,9 @@ const Ground = () => {
       void main() {
       vPosition = position;
       vUv = uv;
-      float z = cnoise(position + uTime * 0.5) * 0.1 ;
+      float noiseFreq = 4.0;
+      vec3 noisePosition = vec3(position.xy * noiseFreq, uTime * 0.1);
+      float z = cnoise(noisePosition) * 0.1 ;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position.x, position.y, z, 1.0);
       gl_PointSize = (z + 1.0) * 3.0;
       }
