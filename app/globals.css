@@ -16,11 +16,12 @@
 html,
 body {
   height: 100vh;
+  max-width: 100vw;
   overflow: hidden;
 }
 
 .parent {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 100vh;
   scroll-snap-points-y: repeat(50vh);
   scroll-snap-type: y mandatory;

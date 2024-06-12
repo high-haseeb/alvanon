@@ -12,16 +12,18 @@ import {Loader} from '@react-three/drei'
 
 export default function Home() {
   return (
-    <div className="overflow-y-scroll w-screen bg-black parent">
-      <Loader/>
+    <div className="w-screen bg-black parent" id="parent">
+
+      {/* <Loader/> */}
       <Navbar />
       <ProgressDots/>
       <BackToTop/>
+
       <Hero />
-      <Scene />
-      <Clients/>
-      <Details />
-      <AlvaForm/>
+      {/* <Scene /> */}
+      {/* <Clients/> */}
+      {/* <Details /> */}
+      {/* <AlvaForm/> */}
       <Footer/>
     </div>
   );

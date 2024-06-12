@@ -5,7 +5,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 
 const AlvaForm = () => {
   return (
-    <div className="overflow-hidden w-screen h-screen text-white bg-black z-40 relative snap-end section">
+    <div className="overflow-hidden w-screen h-screen text-white bg-black z-40 relative snap-end section" id="alvaform">
       <Overlay />
       <Canvas camera={{ zoom: 4 }} className="z-10">
         <ambientLight />

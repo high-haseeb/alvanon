@@ -68,7 +68,6 @@ export function Model(props) {
     suitRef.current.visible = scroll.range(3 * page, page) > 0;
     if (scroll.range(3 * page, page) > 0) {
       for (let index = 0; index < suitRef.current.children.length; index++) {
-        console.log("this was called");
         suitRef.current.children[index].material.opacity = scroll.range(3 * page, page);
       }
     }

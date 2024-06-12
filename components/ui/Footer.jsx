@@ -11,7 +11,7 @@ const Footer = () => {
     { title: "Collaborations", value: "/" },
   ];
   return (
-    <div className="w-screen h-screen section bg-black pt-40 px-40 text-white flex flex-col">
+    <div className="w-screen h-screen section bg-black pt-40 px-40 text-white flex flex-col" id="about">
       <div className="flex text-8xl font-bold items-end justify-center gap-20">
         <span>
           Stay <span className="text-brOrange ">Connected </span>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Clients = () => {
   return (
-    <div className="overflow-hidden z-30 w-screen h-screen text-white bg-black section pt-40 pb-20 flex flex-col items-center justify-between">
+    <div className="overflow-hidden z-30 w-screen h-screen text-white bg-black section pt-40 pb-20 flex flex-col items-center justify-between" id="clients">
       <div className="flex text-8xl font-bold items-end justify-center gap-20 px-40 w-full">
         <span>
           Meet Our <span className="text-brOrange ">Clients</span>

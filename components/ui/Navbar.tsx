@@ -5,7 +5,8 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <div className="text-white fixed top-0 left-0 p-10 z-50 font-bold lg:text-3xl w-screen flex items-center justify-around gap-10">
-      <Image src={"/images/Layer_2.png"} width={180} height={100} alt="alvanon logo" className="bg-transparent" />
+      <Navbar/>
+      <Image src={"/images/Layer_2.png"} width={180} height={100} alt="alvanon logo" className="bg-transparent mix-blend-difference" />
 
       <div className="flex text-[0.75rem] gap-8 font-bold isolate aspect-video rounded-xl bg-black/40 shadow-lg ring-1 ring-black/5 h-10 px-10 w-auto items-center justify-center">
         <Button title="ABOUT"/>
