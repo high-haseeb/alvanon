@@ -27,9 +27,9 @@ export function Model(props) {
 
   const points = [];
   for (let index = 0; index < geometry.attributes.position.count * 3; index += 3) {
-    const x = random(300);
-    const y = random(300);
-    const z = random(300);
+    const x = random(250);
+    const y = random(250);
+    const z = random(250);
     points.push(new THREE.Vector3(x, y, z));
   }
   const bufGeo = new THREE.BufferGeometry().setFromPoints(points);

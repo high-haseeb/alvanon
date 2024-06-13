@@ -32,8 +32,8 @@ export const Points = (props: any) => {
   let particlePositions;
   let linesMesh;
 
-  const maxParticleCount = 1000;
-  let particleCount = 500;
+  const maxParticleCount = 800;
+  let particleCount = 400;
   const r = 800;
   const rHalf = r / 2;
 
@@ -188,7 +188,6 @@ export const Points = (props: any) => {
     new THREE.Vector3(particlePositions[3], particlePositions[4], particlePositions[5]),
   ];
 
-  const texts = ["Point 1", "Point 2"];
 
   group.scale.set(0.01, 0.01, 0.01);
   const texta = useRef<any>([0, 0, 0]);
@@ -202,7 +201,7 @@ export const Points = (props: any) => {
       <mesh ref={texta}>
         <BBAnchor anchor={[0, 0, 0]}>
           <Html center>
-            <div className="border-white border text-white px-4 font-bold w-max">Customer 6969</div>
+            <div className="border-white border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 6969</div>
           </Html>
         </BBAnchor>
       </mesh>
@@ -210,7 +209,7 @@ export const Points = (props: any) => {
       <mesh ref={textb}>
         <BBAnchor anchor={[0, 0, 0]}>
           <Html center>
-            <div className="border-white border text-white px-4 font-bold w-max">Customer 420</div>
+            <div className="border-white border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 420</div>
           </Html>
         </BBAnchor>
       </mesh>
@@ -218,7 +217,7 @@ export const Points = (props: any) => {
       <mesh ref={textc}>
         <BBAnchor anchor={[0, 0, 0]}>
           <Html center>
-            <div className="border-white border text-white px-4 font-bold w-max">Customer 5004</div>
+            <div className="border-white border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 5004</div>
           </Html>
         </BBAnchor>
       </mesh>
@@ -226,7 +225,7 @@ export const Points = (props: any) => {
       <mesh ref={textd}>
         <BBAnchor anchor={[0, 0, 0]}>
           <Html center>
-            <div className="border-white border text-white px-4 font-bold w-max">Customer 3002</div>
+            <div className="border-white border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 3002</div>
           </Html>
         </BBAnchor>
       </mesh>

@@ -12,7 +12,7 @@ import {Loader} from '@react-three/drei'
 
 export default function Home() {
   return (
-    <div className="w-screen bg-black parent" id="parent">
+    <div className="w-screen bg-black parent overflow-x-hidden" id="parent">
 
       <Loader/>
       <Navbar />

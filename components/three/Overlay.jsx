@@ -5,15 +5,15 @@ import { useState } from "react";
 const Section = (props) => {
   return (
     <section
-      className={`h-screen w-screen flex justify-between p-20 items-end`}
+      className={`h-screen w-screen flex justify-between p-10 lg:px-40 items-end text-center lg:text-left`}
       style={{
         opacity: props.opacity,
       }}
     >
       <div className="flex items-center justify-center">
-        <div className="max-w-sm w-full text-5xl font-bold font-sans text-white ">{props.children}</div>
+        <div className="max-w-sm w-full font-bold text-white ">{props.children}</div>
       </div>
-        <div className="text-right max-w-sm w-full text-5xl font-bold font-sans text-white ">
+        <div className="lg:text-right max-w-sm w-full text-3xl lg:font-bold text-white hidden lg:block">
         Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
       </div>
     </section>
@@ -36,7 +36,7 @@ export const Overlay = () => {
 
   return (
     <Scroll html>
-      <div className="w-screen">
+      <div className="w-screen text-sm lg:text-4xl">
         <Section opacity={opacityFirstSection}>
           <div className="text-brOrange">Lorem ipsum dolor </div>sit amet, qui minim labore adipisicing 
           minim sint cillum sint consectetur cupidatat.

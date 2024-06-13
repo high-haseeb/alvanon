@@ -5,7 +5,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 
 const AlvaForm = () => {
   return (
-    <div className="overflow-hidden w-screen h-screen text-white bg-black z-40 relative snap-end section" id="alvaform">
+    <div className="overflow-hidden w-screen h-screen text-white bg-black z-40 relative section" id="alvaform">
       <Overlay />
       <Canvas camera={{ zoom: 4 }} className="z-10">
         <ambientLight />
@@ -18,17 +18,17 @@ const AlvaForm = () => {
 const Overlay = () => {
   return (
     <div className="h-full w-full z-50 flex items-center justify-center text-white bg-transparent absolute top-0 left-0 flex-col">
-      <div className="flex flex-col items-center justify-center w-1/2 gap-4">
-        <div className="text-7xl font-bold">
+      <div className="flex flex-col items-center justify-center mb-40 w-full lg:w-1/2 gap-4">
+        <div className="text-4xl lg:text-7xl font-bold">
           <span className="text-brOrange">Alva</span>Form
         </div>
-        <div className="w-2/3">
+        <div className="w-2/3 text-xs lg:text-lg text-center">
           Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat. Lorem ipsum dolor sit amet, qui minim
           labore adipisicing minim sint cillum sint consectetur cupidatat. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum
           sint consectetur cupidatat.
         </div>
       </div>
-      <div className="flex justify-self-end absolute bottom-0">
+      <div className="grid grid-cols-2 grid-rows-2 lg:flex justify-self-end absolute bottom-0">
         <Section title={"Physical AlvaForm"} />
         <Section title={"Physical AlvaForm"} />
         <Section title={"Physical AlvaForm"} />
@@ -38,38 +38,49 @@ const Overlay = () => {
   );
 };
 const Section = ({ title }) => {
-  return (<div className="backdrop-blur-lg bg-black/20 w-80 h-[14rem] border-t border-x border-gray-500 text-3xl font-bold group gap-2 flex flex-col">
-    <div className="w-full h-4 bg-transparent group-hover:bg-brOrange group-hover:animate-expandWidth"></div>
-    <div className="px-10 flex flex-col gap-4">
-      {title}
-      <div className="opacity-0 text-sm font-normal group-hover:opacity-100 transition-opacity text-white ">
-        Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+  return (
+    <div className="backdrop-blur-lg bg-black/20 w-[50vw] lg:w-80 h-[8rem] lg:h-[14rem] border-t border-x border-gray-500 text-md lg:text-3xl font-bold group gap-2 flex flex-col">
+      <div className="w-full h-4 bg-transparent group-hover:bg-brOrange group-hover:animate-expandWidth"></div>
+      <div className="px-10 flex flex-col gap-4">
+        {title}
+        <div className="opacity-0 text-xs lg:text-sm font-normal group-hover:opacity-100 transition-opacity text-white ">
+          Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+        </div>
       </div>
     </div>
-  </div>)
+  );
 };
 const Model = () => {
   const { nodes } = useGLTF("/casual.glb");
   const modelGeo = nodes.Avatar_AlvaMesh_1.geometry;
   const modela = new THREE.Points(modelGeo, new THREE.PointsMaterial({ color: "#EC7700" }));
-  const modelb = modela.clone();
   modela.position.x = 0;
   const speed = 0.5;
   useFrame((_, delta) => {
     modela.rotation.z -= delta * speed;
-    modelb.rotation.z += delta * speed;
   });
   return (
     <>
-      <group rotation={[Math.PI / 2, 0, 0]} position={[-120, -80, -150 * 4]}>
+      <group rotation={[Math.PI / 2, 0, 0]} position={[window.innerWidth < 600 ? 40 : 120, -80, -150 * (window.innerWidth < 600 ? 5 : 4)]}>
         b
         <primitive object={modela} />
       </group>
-      <group rotation={[Math.PI / 2, 0, 0]} position={[120, -80, -150 * 4]}>
-        <primitive object={modelb} />
+      <group rotation={[Math.PI / 2, 0, 0]} position={[window.innerWidth < 600 ? -40 : -120, -80, -150 * (window.innerWidth < 600 ? 5 : 4)]}>
+        <Male />
       </group>
     </>
   );
+};
+const Male = () => {
+  const { nodes } = useGLTF("/male.glb");
+  const modelGeo = nodes["ASD-MMNN040-1910_STD_Regular"].geometry;
+  const modela = new THREE.Points(modelGeo, new THREE.PointsMaterial({ color: "#EC7700" }));
+  modela.position.x = 0;
+  const speed = 0.5;
+  useFrame((_, delta) => {
+    modela.rotation.z -= delta * speed;
+  });
+  return <primitive object={modela} />;
 };
 
 export default AlvaForm;
