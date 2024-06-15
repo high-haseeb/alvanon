@@ -172,10 +172,10 @@ export const Points = (props: any) => {
 
     pointCloud.geometry.attributes.position.needsUpdate = true;
     group.rotation.y += 0.001;
-    texta.current.position.set(particlePositions[0] / 100, particlePositions[1]/ 100, 0);
-    textb.current.position.set(particlePositions[30] / 100, particlePositions[31]/ 100, 0);
-    textc.current.position.set(particlePositions[600] / 100, particlePositions[601]/ 100, 0);
-    textd.current.position.set(particlePositions[60] / 100, particlePositions[61]/ 100, 0);
+    texta.current.position.set(particlePositions[0] / 100, particlePositions[1]/ 100, particlePositions[2]/ 100); 
+    textb.current.position.set(particlePositions[30] / 100, particlePositions[31]/ 100, particlePositions[32]/ 100);
+    textc.current.position.set(particlePositions[600] / 100, particlePositions[601]/ 100, particlePositions[602]/100);
+    textd.current.position.set(particlePositions[60] / 100, particlePositions[61]/ 100, particlePositions[62] /100);
     // box.current = [particlePositions[0] / 100, particlePositions[1] / 100, 0];
     // console.log(box.current)
     // console.log(box.current.position)
@@ -201,7 +201,8 @@ export const Points = (props: any) => {
       <mesh ref={texta}>
         <BBAnchor anchor={[0, 0, 0]}>
           <Html center>
-            <div className="border-white border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 6969</div>
+            <div className="border-brOrange border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 6969</div>
+            <div className="rounded-full bg-brOrange w-2 h-2 -translate-x-1/2 -translate-y-1/2"></div>
           </Html>
         </BBAnchor>
       </mesh>
@@ -209,7 +210,8 @@ export const Points = (props: any) => {
       <mesh ref={textb}>
         <BBAnchor anchor={[0, 0, 0]}>
           <Html center>
-            <div className="border-white border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 420</div>
+            <div className="border-brOrange border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 4939</div>
+            <div className="rounded-full bg-brOrange w-2 h-2 -translate-x-1/2 -translate-y-1/2"></div>
           </Html>
         </BBAnchor>
       </mesh>
@@ -217,7 +219,8 @@ export const Points = (props: any) => {
       <mesh ref={textc}>
         <BBAnchor anchor={[0, 0, 0]}>
           <Html center>
-            <div className="border-white border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 5004</div>
+            <div className="border-brOrange border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 3094</div>
+            <div className="rounded-full bg-brOrange w-2 h-2 -translate-x-1/2 -translate-y-1/2"></div>
           </Html>
         </BBAnchor>
       </mesh>
@@ -225,7 +228,8 @@ export const Points = (props: any) => {
       <mesh ref={textd}>
         <BBAnchor anchor={[0, 0, 0]}>
           <Html center>
-            <div className="border-white border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 3002</div>
+            <div className="border-brOrange border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 4202</div>
+            <div className="rounded-full bg-brOrange w-2 h-2 -translate-x-1/2 -translate-y-1/2"></div>
           </Html>
         </BBAnchor>
       </mesh>

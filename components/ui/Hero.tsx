@@ -12,7 +12,7 @@ const Hero = () => {
           <div className="font-semibold">
             make clothes,
             <br /> we make
-            <br /> clothes <span className="text-orange-400">fit!</span>
+            <br /> clothes <span className="text-brOrange">fit!</span>
           </div>
         </div>
         <div className="text-xs lg:w-1/2 lg:font-semibold">
