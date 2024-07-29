@@ -1,22 +1,14 @@
 import React, { useEffect, useRef } from "react";
-import { Html, useGLTF, useScroll } from "@react-three/drei";
+import { useGLTF, useScroll } from "@react-three/drei";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { lerp } from "three/src/math/MathUtils.js";
 
+const random = (range) => Math.random() * range * 2 - range;
+
 export function Model(props) {
   const { nodes, materials } = useGLTF("/casual.glb");
   const geometry = nodes.Avatar_AlvaMesh_1.geometry;
-
-  // load the suit and make it not visible
-  const suitRef = useRef();
-  useEffect(() => {
-    if (suitRef.current) {
-      suitRef.current.visible = false;
-    }
-  }, [suitRef.current]);
-
-  const random = (range) => Math.random() * range * 2 - range;
 
   const scroll = useScroll();
   const page = 1 / scroll.pages;
@@ -37,11 +29,8 @@ export function Model(props) {
   lamberModel.material.color = new THREE.Color("#F2D8BD");
   lamberModel.material.opacity = 0;
 
-  // const sensitivity = 0.4;
-  // const tempRotation = new THREE.Vector3();
 
   useFrame(() => {
-    // form model from points
     if (scroll.range(0 * page, page * 1.5) < 1 && scroll.range(0 * page, page) > 0) {
       for (let i = 0; i < model.geometry.attributes.position.count * 3; i++) {
         model.geometry.attributes.position.array[i] = lerp(
@@ -52,19 +41,14 @@ export function Model(props) {
       }
       model.geometry.attributes.position.needsUpdate = true;
     }
-
-    // make the dummy visible
     if (scroll.range(2 * page, page) < 1) {
       lamberModel.material.opacity = scroll.range(2 * page, page);
       model.material.size = (1.0 - scroll.range(2 * page, page)) * 0.1;
       model.visible = scroll.range(2 * page, page / 2) < 1;
     }
 
-    // make the suit visible
-    // suitRef.current.visible = scroll.range(3 * page, page) > 0;
     if (scroll.range(3 * page, page) > 0) {
-      // for (let index = 0; index < suitRef.current.children.length; index++) {
-        lamberModel.material.opacity = 1.0 -  scroll.range(3 * page, page);
+      lamberModel.material.opacity = 1.0 -  scroll.range(3 * page, page);
       }
   });
   const group = useRef();
