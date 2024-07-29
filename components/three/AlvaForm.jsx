@@ -1,7 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import React from "react";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import React, { useMemo } from "react";
+import { useGLTF } from "@react-three/drei";
 
 const AlvaForm = () => {
   return (
@@ -51,36 +51,39 @@ const Section = ({ title }) => {
   );
 };
 const Model = () => {
-  const { nodes } = useGLTF("/casual.glb");
-  const modelGeo = nodes.Avatar_AlvaMesh_1.geometry;
-  const modela = new THREE.Points(modelGeo, new THREE.PointsMaterial({ color: "#EC7700" }));
-  modela.position.x = 0;
+  const { nodes: casualNodes } = useGLTF("/casual.glb");
+  const { nodes: maleNodes } = useGLTF("/male.glb");
+
+  const modelGeo = casualNodes.Avatar_AlvaMesh_1.geometry;
+  const maleGeo = maleNodes["ASD-MMNN040-1910_STD_Regular"].geometry;
+
+  const material = useMemo(() => new THREE.PointsMaterial({ color: "#EC7700" }), []);
+
+  const modela = useMemo(() => new THREE.Points(modelGeo, material), [modelGeo, material]);
+  const maleModel = useMemo(() => new THREE.Points(maleGeo, material), [maleGeo, material]);
   const speed = 0.5;
   useFrame((_, delta) => {
     modela.rotation.z -= delta * speed;
+    maleModel.rotation.z -= delta * speed;
   });
+
+  const isMobile = window.innerWidth < 600;
+  const modelPosition = isMobile ? 40 : 120;
+  const groupPositionZ = -150 * (isMobile ? 5 : 4);
+
   return (
     <>
-      <group rotation={[Math.PI / 2, 0, 0]} position={[window.innerWidth < 600 ? 40 : 120, -80, -150 * (window.innerWidth < 600 ? 5 : 4)]}>
-        b
+      <group rotation={[Math.PI / 2, 0, 0]} position={[modelPosition, -80, groupPositionZ]}>
         <primitive object={modela} />
       </group>
-      <group rotation={[Math.PI / 2, 0, 0]} position={[window.innerWidth < 600 ? -40 : -120, -80, -150 * (window.innerWidth < 600 ? 5 : 4)]}>
-        <Male />
+      <group rotation={[Math.PI / 2, 0, 0]} position={[-modelPosition, -80, groupPositionZ]}>
+        <primitive object={maleModel} />
       </group>
     </>
   );
 };
-const Male = () => {
-  const { nodes } = useGLTF("/male.glb");
-  const modelGeo = nodes["ASD-MMNN040-1910_STD_Regular"].geometry;
-  const modela = new THREE.Points(modelGeo, new THREE.PointsMaterial({ color: "#EC7700" }));
-  modela.position.x = 0;
-  const speed = 0.5;
-  useFrame((_, delta) => {
-    modela.rotation.z -= delta * speed;
-  });
-  return <primitive object={modela} />;
-};
+
+useGLTF.preload('/male.glb')
+useGLTF.preload('/casual.glb')
 
 export default AlvaForm;

@@ -1,5 +1,6 @@
 import React from "react";
 import DotGround from "../three/DotGround";
+import AnimatedText from "./AnimatedText";
 
 const Details = () => {
   return (
@@ -9,10 +10,10 @@ const Details = () => {
 
         <div className="flex flex-col gap-4 items-center lg:items-start justify-center w-full">
           <div className="text-5xl font-semibold lg:text-8xl">
-            <div className="text-orange-400">Alvanon</div>
-            has helped
-            <br /> previous
-            <br /> clients:
+            <AnimatedText><div className="text-orange-400">Alvanon</div></AnimatedText>
+            <AnimatedText>has helped</AnimatedText>
+            <AnimatedText>previous</AnimatedText>
+            <AnimatedText>clients:</AnimatedText>
           </div>
 
           <div className="text-xs lg:text-sm lg:w-1/2 lg:p-0">

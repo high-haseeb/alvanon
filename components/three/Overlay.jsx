@@ -6,7 +6,7 @@ import { useState } from "react";
 const Section = (props) => {
   return (
     <section
-      className={`h-screen w-screen flex justify-between p-10 lg:px-40 items-end text-center lg:text-left`}
+      className={`h-screen w-screen flex justify-between p-10 lg:px-40 items-end text-center lg:text-left bg-transparent`}
       style={{
         opacity: props.opacity,
       }}
@@ -32,7 +32,7 @@ export const Overlay = () => {
     setOpacityFirstSection(1 - scroll.range(0, 1 / 4));
     setOpacitySecondSection(scroll.curve(1 / 4, 1 / 4));
     setOpacityThirdSection(scroll.curve(2 / 4, 1 / 4));
-    setOpacityFourthSection(scroll.range(3 / 4, 1 / 4));
+    setOpacityFourthSection(1);
   });
 
   return (
@@ -51,13 +51,14 @@ export const Overlay = () => {
           <p className="animate-bounce mt-6">↓</p>
         </Section>
         <Section right opacity={opacityFourthSection}>
+          <div className="bg-white">
           <Image
             src={"/walking.gif"}
             width={800}
             height={300}
-            className="bg-red-200 absolute w-1/2 h-screen object-cover bottom-0 left-1/2 -translate-x-1/2 z-0 mix-blend-difference"
+            className="absolute w-1/2 h-screen object-cover bottom-0 left-1/2 -translate-x-1/2 -z-10 "
             alt="walking"
-          />
+          /></div>
           <div className="text-brOrange z-10">Lorem ipsum dolor </div>sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
           <p className="animate-bounce mt-6 z-10">↓</p>
         </Section>

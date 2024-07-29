@@ -3,7 +3,6 @@ import { Html, useGLTF, useScroll } from "@react-three/drei";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { lerp } from "three/src/math/MathUtils.js";
-import Image from "next/image";
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/casual.glb");
@@ -15,12 +14,6 @@ export function Model(props) {
     if (suitRef.current) {
       suitRef.current.visible = false;
     }
-    //   for (let index = 0; index < suitRef.current.children.length; index++) {
-    //     suitRef.current.children[index].material = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.0, color: "red" });
-    // suitRef.current.children[index].material.transparent = true;
-    // suitRef.current.children[index].material.opacity = 0;
-    // suitRef.current.children[index].material.color = new THREE.Color('red')
-    //   }
   }, [suitRef.current]);
 
   const random = (range) => Math.random() * range * 2 - range;
@@ -47,7 +40,7 @@ export function Model(props) {
   // const sensitivity = 0.4;
   // const tempRotation = new THREE.Vector3();
 
-  useFrame(({ camera, pointer }) => {
+  useFrame(() => {
     // form model from points
     if (scroll.range(0 * page, page * 1.5) < 1 && scroll.range(0 * page, page) > 0) {
       for (let i = 0; i < model.geometry.attributes.position.count * 3; i++) {
@@ -73,49 +66,13 @@ export function Model(props) {
       // for (let index = 0; index < suitRef.current.children.length; index++) {
         lamberModel.material.opacity = 1.0 -  scroll.range(3 * page, page);
       }
-    // }
-    // camera.rotation.y += 0.05 * ((-pointer.x * 0.5) - group.current.rotation.y);
-    // group.current.rotation.z += 0.05 * ((pointer.y * 0.01) - group.current.rotation.z);
-    // rotate the models with mouse
-    // tempRotation.lerp({ x:-pointer.y, y:0, z: 0}, 0.02);
-    // camera.lookAt(tempRotation)
-    // model.rotation.setFromVector3(tempRotation);
-    // lamberModel.rotation.setFromVector3(tempRotation);
-    // suitRef.current.rotation.setFromVector3(tempRotation);
   });
   const group = useRef();
 
   return (
     <group {...props} dispose={null} position={[0, -80, -150 * 4]} rotation={[Math.PI / 2, 0, 0]} ref={group}>
-      {/* <Html fullscreen ref={suitRef}> */}
-      {/*   <div className="bg-red-200 w-full h-full text-9xl"> */}
-      {/*     <Image src={"/walking.gif"} width={1000} height={1000} className="w-full h-full" alt="walking" /> */}
-      {/*   </div> */}
-      {/* </Html> */}
-      {/* <group ref={(ref) => (suitRef.current = ref)}> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_0_Outside.geometry} material={materials.Mat_0} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_10_Outside.geometry} material={materials.Mat_10} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_11_Outside.geometry} material={materials.Mat_11} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_12_Outside.geometry} material={materials.Mat_12} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_13_Outside.geometry} material={materials.Mat_13} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_1_Outside.geometry} material={materials.Mat_1} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_2_Outside.geometry} material={materials.Mat_2} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_3_Outside.geometry} material={materials.Mat_3} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_4_Outside.geometry} material={materials.Mat_4} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_5_Outside.geometry} material={materials.Mat_5} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_6_Outside.geometry} material={materials.Mat_6} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_7_Outside.geometry} material={materials.Mat_7} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_8_Outside.geometry} material={materials.Mat_8} /> */}
-      {/*   <mesh geometry={nodes.Design_Piece_mat_9_Outside.geometry} material={materials.Mat_9} /> */}
-      {/* </group> */}
-
       <primitive object={model} />
       <primitive object={lamberModel} />
-
-      {/*TODO: make the floor  */}
-
-      {/* <mesh geometry={nodes.Avatar_pasted__Sport_sneakers_2.geometry} material={materials.pasted__Sport_sneakers_0} /> */}
-      {/* <mesh geometry={nodes.Avatar_pasted__Sport_sneakers_3.geometry} material={materials.pasted__Sport_sneakers_0} /> */}
     </group>
   );
 }

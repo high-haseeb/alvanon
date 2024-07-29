@@ -13,10 +13,15 @@ const config: Config = {
           "0%": { width: "0%" },
           "100%": { width: "100%" },
         },
+        slideUp: {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0%)" },
+        },
       },
       animation: {
         expandWidth: "expandWidth 1s ease-in-out forwards",
-        'slide-left': 'slide-left 8s linear infinite',
+        "slide-left": "slide-left 8s linear infinite",
+        slideUp: "slideUp 1s ease-out forwards",
       },
       fontFamily: {
         Montserrat: "Montserrat",

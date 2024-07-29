@@ -21,8 +21,8 @@ export const Points = (props: any) => {
     showLines: true,
     minDistance: 150,
     limitConnections: true,
-    maxConnections: 20,
-    particleCount: 50,
+    maxConnections: 10,
+    particleCount: 30,
   };
   let group;
   const particlesData: any[] = [];
@@ -32,20 +32,12 @@ export const Points = (props: any) => {
   let particlePositions;
   let linesMesh;
 
-  const maxParticleCount = 800;
-  let particleCount = 400;
+  const maxParticleCount = 500;
+  let particleCount = 300;
   const r = 800;
   const rHalf = r / 2;
 
   group = new THREE.Group();
-
-  // const helper = new THREE.BoxHelper(
-  //   new THREE.Mesh(new THREE.BoxGeometry(r, r, r)),
-  // );
-  // helper.material.color.setHex(0x474747);
-  // helper.material.blending = THREE.AdditiveBlending;
-  // helper.material.transparent = true;
-  // group.add(helper);
 
   const segments = maxParticleCount * maxParticleCount;
 

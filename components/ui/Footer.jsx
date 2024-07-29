@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import AnimatedText from "./AnimatedText";
 
 const Footer = () => {
   const links = [
@@ -16,7 +17,7 @@ const Footer = () => {
 
         <div className="flex-col w-full flex lg:flex-row text-3xl lg:text-8xl font-bold items-center lg:items-end justify-center gap-5 lg:gap-20 p-10">
           <span className="lg:flex items-center justify-center gap-4 lg:flex-row">
-            Stay <span className="text-brOrange ">Connected </span>
+            <AnimatedText>Stay <span className="text-brOrange ">Connected </span></AnimatedText>
           </span>
           <div className="h-[1px] rounded-xl bg-gray-300 w-full lg:flex-grow" />
         </div>

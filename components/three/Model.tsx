@@ -11,11 +11,11 @@ const Scene = () => {
     <div className='w-screen h-screen section' id='points'>
       <Canvas camera={{zoom: 4}}>
         <Environment preset='city' />
+        <Sparkles color={'orange'} />
         <ScrollControls pages={4} damping={0.25}  distance={2} prepend  >
           <Model />
           <Overlay />
         </ScrollControls>
-        <Sparkles color={'orange'} />
       </Canvas>
     </div>
   )

@@ -23,7 +23,7 @@ body {
 .parent {
   overflow-y: scroll;
   height: 100vh;
-  scroll-snap-points-y: repeat(50vh);
+  scroll-snap-points-y: repeat(100vh);
   scroll-snap-type: y mandatory;
 }
 
