@@ -12,7 +12,7 @@ const Scene = () => {
       <Canvas camera={{zoom: 4}}>
         <Environment preset='city' />
         <Sparkles color={'orange'} />
-        <ScrollControls pages={4} damping={0.25}  distance={2} prepend  >
+        <ScrollControls pages={4} damping={0.5}  distance={2} prepend  >
           <Model />
           <Overlay />
         </ScrollControls>
