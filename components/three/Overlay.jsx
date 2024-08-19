@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import Image from "next/image";
-import { useState } from "react";
+import useOpacityStore from "./store";
 
 const Section = (props) => {
   return (
@@ -26,18 +26,18 @@ export const Overlay = () => {
   const [opacityFirstSection, setOpacityFirstSection] = useState(1);
   const [opacitySecondSection, setOpacitySecondSection] = useState(1);
   const [opacityThirdSection, setOpacityThirdSection] = useState(1);
-  const [opacityFourthSection, setOpacityFourthSection] = useState(1);
+  const setOpacity = useOpacityStore(state => state.setOpacity);
 
   useFrame(() => {
     setOpacityFirstSection(1 - scroll.range(0, 1 / 4));
     setOpacitySecondSection(scroll.curve(1 / 4, 1 / 4));
     setOpacityThirdSection(scroll.curve(2 / 4, 1 / 4));
-    setOpacityFourthSection(1);
+    setOpacity(scroll.range(3 / 4, 1 / 4));
   });
 
   return (
-    <Scroll html>
-      <div className="w-screen text-sm lg:text-4xl">
+    <Scroll html style={{ position: "relative" }}>
+      <div className="w-screen text-sm lg:text-4xl relative">
         <Section opacity={opacityFirstSection}>
           <div className="text-brOrange">Lorem ipsum dolor </div>sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
           <p className="animate-bounce mt-6">↓</p>
@@ -49,18 +49,6 @@ export const Overlay = () => {
         <Section opacity={opacityThirdSection}>
           <div className="text-brOrange">Lorem ipsum dolor </div>sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
           <p className="animate-bounce mt-6">↓</p>
-        </Section>
-        <Section right opacity={opacityFourthSection}>
-          <div className="bg-white">
-          <Image
-            src={"/walking.gif"}
-            width={800}
-            height={300}
-            className="absolute w-1/2 h-screen object-cover bottom-0 left-1/2 -translate-x-1/2 -z-10 "
-            alt="walking"
-          /></div>
-          <div className="text-brOrange z-10">Lorem ipsum dolor </div>sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
-          <p className="animate-bounce mt-6 z-10">↓</p>
         </Section>
       </div>
     </Scroll>
