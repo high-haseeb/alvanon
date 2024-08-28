@@ -6,7 +6,7 @@ const config: Config = {
     extend: {
       keyframes: {
         "slide-left": {
-          from: { transform: "translateX(0)" },
+          from: { transform: "translateX(100%)" },
           to: { transform: "translateX(-100%)" },
         },
         expandWidth: {

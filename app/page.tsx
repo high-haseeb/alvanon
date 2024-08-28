@@ -9,7 +9,7 @@ import AlvaForm from "@/components/three/AlvaForm";
 import Footer from "@/components/ui/Footer";
 import Clients from "@/components/ui/Clients";
 import { Suspense } from "react";
-import { useProgress } from "@react-three/drei";
+import { useGLTF, useProgress } from "@react-three/drei";
 
 export default function Home() {
   return (
@@ -39,3 +39,6 @@ const Loader = () => {
     </div>
   )
 }
+
+useGLTF.preload('/male_new.glb')
+useGLTF.preload('/casual_new.glb')

@@ -51,13 +51,13 @@ const Section = ({ title }) => {
   );
 };
 const Model = () => {
-  const { nodes: casualNodes } = useGLTF("/casual.glb");
-  const { nodes: maleNodes } = useGLTF("/male.glb");
+  const { nodes: casualNodes } = useGLTF("/casual_new.glb");
+  const { nodes: maleNodes } = useGLTF("/male_new.glb");
 
   const modelGeo = casualNodes.Avatar_AlvaMesh_1.geometry;
   const maleGeo = maleNodes["ASD-MMNN040-1910_STD_Regular"].geometry;
 
-  const material = useMemo(() => new THREE.PointsMaterial({ color: "#EC7700" }), []);
+  const material = useMemo(() => new THREE.PointsMaterial({ color: "#EC7700", size: 0.01, opacity: 0.1 , transparent: true}), []);
 
   const modela = useMemo(() => new THREE.Points(modelGeo, material), [modelGeo, material]);
   const maleModel = useMemo(() => new THREE.Points(maleGeo, material), [maleGeo, material]);
@@ -83,7 +83,7 @@ const Model = () => {
   );
 };
 
-useGLTF.preload('/male.glb')
-useGLTF.preload('/casual.glb')
+useGLTF.preload('/male_new.glb')
+useGLTF.preload('/casual_new.glb')
 
 export default AlvaForm;

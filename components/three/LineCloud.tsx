@@ -2,13 +2,13 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import React, { useRef, useState } from "react";
 import * as THREE from "three";
-import { BBAnchor, Box, Html, OrbitControls, Text } from "@react-three/drei";
+import { BBAnchor, Billboard, Box, Html, OrbitControls, Text, useGLTF } from "@react-three/drei";
 
 const LineCloud = (props: any) => {
   return (
     <div className="absolute top-0 left-0 w-full h-full z-0 bg-black" {...props}>
       <Canvas className="w-full h-full">
-        <OrbitControls enableZoom={false}/>
+        <OrbitControls enableZoom={false} />
         <Points />
       </Canvas>
     </div>
@@ -25,8 +25,10 @@ export const Points = (props: any) => {
     particleCount: 30,
   };
   let group;
+  const labelRefs = useRef<any>([]);
   const particlesData: any[] = [];
-  let positions, colors;
+  let positions;
+  let colors;
   let particles;
   let pointCloud;
   let particlePositions;
@@ -113,6 +115,12 @@ export const Points = (props: any) => {
       particlePositions[i * 3 + 1] += particleData.velocity.y;
       particlePositions[i * 3 + 2] += particleData.velocity.z;
 
+      if (labelRefs.current[i]) {
+        labelRefs.current[i].position.set(
+          particlePositions[i * 3],
+          particlePositions[i * 3 + 1],
+          particlePositions[i * 3 + 2]);
+      }
       if (particlePositions[i * 3 + 1] < -rHalf || particlePositions[i * 3 + 1] > rHalf) particleData.velocity.y = -particleData.velocity.y;
 
       if (particlePositions[i * 3] < -rHalf || particlePositions[i * 3] > rHalf) particleData.velocity.x = -particleData.velocity.x;
@@ -120,6 +128,7 @@ export const Points = (props: any) => {
       if (particlePositions[i * 3 + 2] < -rHalf || particlePositions[i * 3 + 2] > rHalf) particleData.velocity.z = -particleData.velocity.z;
 
       if (effectController.limitConnections && particleData.numConnections >= effectController.maxConnections) continue;
+
 
       // Check collision
       for (let j = i + 1; j < particleCount; j++) {
@@ -164,69 +173,34 @@ export const Points = (props: any) => {
 
     pointCloud.geometry.attributes.position.needsUpdate = true;
     group.rotation.y += 0.001;
-    texta.current.position.set(particlePositions[0] / 100, particlePositions[1]/ 100, particlePositions[2]/ 100); 
-    textb.current.position.set(particlePositions[30] / 100, particlePositions[31]/ 100, particlePositions[32]/ 100);
-    textc.current.position.set(particlePositions[600] / 100, particlePositions[601]/ 100, particlePositions[602]/100);
-    textd.current.position.set(particlePositions[60] / 100, particlePositions[61]/ 100, particlePositions[62] /100);
-    // box.current = [particlePositions[0] / 100, particlePositions[1] / 100, 0];
-    // console.log(box.current)
-    // console.log(box.current.position)
-    // console.log(particlePositions[0], particlePositions[1], particlePositions[2])
   });
 
-  // Add floating text to a couple of points
-  const textPositions = [
-    new THREE.Vector3(particlePositions[0], particlePositions[1], particlePositions[2]),
-    new THREE.Vector3(particlePositions[3], particlePositions[4], particlePositions[5]),
+  group.scale.set(0.01, 0.01, 0.01);
+  const labelData = [
+    "Returns Data",
+    "Sales by Size Data",
+    "Garment Grade Intervals",
+    "Competitor Analysis",
+    "Customer Buying History Data",
+    "Fit Prediction Data",
+    "Regional Body Scan Data",
+    "Population BMI Data",
   ];
 
-
-  group.scale.set(0.01, 0.01, 0.01);
-  const texta = useRef<any>([0, 0, 0]);
-  const textb = useRef<any>([0, 0, 0]);
-  const textc = useRef<any>([0, 0, 0]);
-  const textd = useRef<any>([0, 0, 0]);
-  //
   return (
     <>
-      <primitive object={group} />
-      <mesh ref={texta}>
-        <BBAnchor anchor={[0, 0, 0]}>
-          <Html center>
-            <div className="border-brOrange border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 6969</div>
-            <div className="rounded-full bg-brOrange w-2 h-2 -translate-x-1/2 -translate-y-1/2"></div>
-          </Html>
-        </BBAnchor>
-      </mesh>
-
-      <mesh ref={textb}>
-        <BBAnchor anchor={[0, 0, 0]}>
-          <Html center>
-            <div className="border-brOrange border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 4939</div>
-            <div className="rounded-full bg-brOrange w-2 h-2 -translate-x-1/2 -translate-y-1/2"></div>
-          </Html>
-        </BBAnchor>
-      </mesh>
-
-      <mesh ref={textc}>
-        <BBAnchor anchor={[0, 0, 0]}>
-          <Html center>
-            <div className="border-brOrange border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 3094</div>
-            <div className="rounded-full bg-brOrange w-2 h-2 -translate-x-1/2 -translate-y-1/2"></div>
-          </Html>
-        </BBAnchor>
-      </mesh>
-
-      <mesh ref={textd}>
-        <BBAnchor anchor={[0, 0, 0]}>
-          <Html center>
-            <div className="border-brOrange border text-white px-4 font-bold w-max text-xs lg:text-md opacity-45 lg:opacity-100 backdrop-blur">Customer 4202</div>
-            <div className="rounded-full bg-brOrange w-2 h-2 -translate-x-1/2 -translate-y-1/2"></div>
-          </Html>
-        </BBAnchor>
-      </mesh>
+      <primitive object={group} >
+      {labelData.map((text, index) => (
+        <Billboard key={index} ref={(el) => labelRefs.current.push(el)}>
+          <Text fontSize={10} fontWeight={"bold"}>
+            {text}
+          </Text>
+        </Billboard>
+      ))}
+      </primitive>
     </>
   );
 };
+
 
 export default LineCloud;

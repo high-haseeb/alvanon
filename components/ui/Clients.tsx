@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import AnimatedText from "./AnimatedText";
 
 const Clients = () => {
@@ -13,60 +12,70 @@ const Clients = () => {
         <div className="h-[1px] rounded-xl bg-gray-300 lg:flex-grow w-full mt-10 lg:mt-0" />
       </div>
 
-      <div className="logos group relative overflow-hidden whitespace-nowrap py-10 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)] flex flex-col gap-10">
-        <div className="animate-slide-left  inline-block w-screen">
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+      <div className="logos group flex flex-col gap-10">
+        
+        <div className="imgBox scroll w-screen">
+          <div>
+            <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+          </div>
 
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline hidden" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
-
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
-
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline hidden" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+          <div >
+            <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+          </div>
         </div>
 
-        <div className="animate-slide-left  inline-block w-screen">
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+        
+        <div className="imgBox scroll w-screen">
+          <div>
+            <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+              <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+              <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+          </div>
 
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline hidden" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline hidden" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+          <div >
+            <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+              <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+              <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+          </div>
         </div>
 
-        <div className="animate-slide-left  inline-block w-screen">
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+        
+        <div className="imgBox scroll w-screen">
+          <div>
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+              <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+              <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+          </div>
 
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline hidden" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
-
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 inline  " src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
-
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline hidden" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
-          <img className="lg:mx-10 w-1/3 lg:w-1/6 lg:inline  hidden" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+          <div >
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+              <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg" alt="Reform" />
+              <img className="" src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" />
+            <img className="" src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" />
+          </div>
         </div>
+
 
       </div>
       <button className="text-sm font-bold lg:text-xl hover:opacity-80 hover:gap-1 flex gap-0 transition">
